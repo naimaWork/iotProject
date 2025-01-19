@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "author": "NAIMA MECHOUATE",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -137.4, "left": -285.2, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -48, "left": 52.84, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": -238.5, "left": 34.3, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic2",
+      "top": -238.5,
+      "left": -176.9,
+      "attrs": { "distance": "252" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ultrasonic2:TRIG", "esp:4", "green", [ "v9.6", "h162.8", "v38.4", "h115.2", "v153.6" ] ],
+    [ "ultrasonic2:ECHO", "esp:5", "green", [ "v19.2", "h277.6", "v48", "h0", "v105.6" ] ],
+    [ "esp:3V3", "bb1:bp.25", "green", [ "h-9.45", "v67.2" ] ],
+    [ "ultrasonic2:VCC", "bb1:30b.j", "red", [ "v76.8", "h144", "v48" ] ],
+    [ "esp:CMD", "bb1:bn.17", "green", [ "h0" ] ],
+    [ "ultrasonic2:GND", "bb1:21b.j", "black", [ "v0" ] ],
+    [ "ultrasonic1:VCC", "bb1:30t.b", "red", [ "v0" ] ],
+    [ "ultrasonic1:GND", "bb1:21t.d", "black", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "esp:18", "green", [ "v76.8", "h57.2", "v124.8" ] ],
+    [ "ultrasonic1:ECHO", "esp:19", "green", [ "v67.2", "h37.6", "v124.8" ] ]
+  ],
+  "dependencies": {}
+}
