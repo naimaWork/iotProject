@@ -150,26 +150,10 @@ void loop() {
     return;
   }
 
-  // Initialiser une variable pour le message de notification
-  String notificationMessage = "";
 
-  // Vérifier les niveaux des capteurs et générer un message d'alerte
-  if (distance1 < 10) {
-    notificationMessage = "Field1 (Capteur 1) a atteint un niveau critique: " + String(distance1) + " cm.";
-  } else if (distance2 < 10) {
-    notificationMessage = "Field2 (Capteur 2) a atteint un niveau critique: " + String(distance2) + " cm.";
-  }
-  String payload = "";
-  if (notificationMessage != "") {
-    // Préparer le payload dynamique pour ThingHTTP
-     payload = "field1=" + String(distance1) + "&field2=" + String(distance2) + "&status=MQTTPUBLISH&alert_message=" + notificationMessage;
-  }
-  else{
-     // Préparer le payload
-    payload = "field1=" + String(distance1) + "&field2=" + String(distance2) + "&status=MQTTPUBLISH";
-  }
+
   // Préparer le payload
-  //String payload = "field1=" + String(distance1) + "&field2=" + String(distance2) + "&status=MQTTPUBLISH";
+  String payload = "field1=" + String(distance1) + "&field2=" + String(distance2) + "&status=MQTTPUBLISH";
   Serial.print("Payload préparé : ");
   Serial.println(payload);
 
@@ -183,6 +167,6 @@ void loop() {
   }
 
   // Attente avant la prochaine mise à jour
-  delay(updateInterval * 600 000);
+  delay(updateInterval * 1000);
 }
 
